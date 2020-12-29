@@ -57,10 +57,10 @@ class Student(object):
             Hostel_Id=str(Hostel_Id)
             hid=open("Hostel_IDs.txt","a")
             hid.write("\n"+Hostel_Id)
-            print self.Name+" Added Successfully with Hostel ID :"+Hostel_Id
+            print (self.Name+" Added Successfully with Hostel ID :"+Hostel_Id)
 
         except:
-            print "File Not Found"
+            print ("File Not Found")
 
 
     #Method to Remove Student from File System
@@ -70,21 +70,21 @@ class Student(object):
             if (path.exists("Student"+str(hostel_id)+".txt")):
                 file1=open("Student"+str(hostel_id)+".txt","r")
                 for i in file1:
-                        print i
+                        print (i)
                 file1.close()
                 ch=raw_input("Are sure you want to Delete this student?\t Y/N\t")
                 if ch=='y' or ch=='Y':
                     os.system('cls')
                     os.remove("Student"+str(hostel_id)+".txt")
-                    print "Student with Hostel ID: "+str(hostel_id)+" is Deleted Successfully"
+                    print ("Student with Hostel ID: "+str(hostel_id)+" is Deleted Successfully")
                 else:
                     os.system('cls')
-                    print "Not Deleted"
+                    print ("Not Deleted")
             else:
-                print "Not Found"
+                print ("Not Found")
 
         except:
-            print "No Student Found"
+            print ("No Student Found")
 
 #Class Room which inherits Student
 class Room(Student):
@@ -113,9 +113,9 @@ class Room(Student):
             Room_Id=str(Room_Id)
             rid=open("Room_Id.txt","a")
             rid.write("\n"+Room_Id)
-            print "New Room with Room Number : "+str(Room_Id)+" Added Successfully"
+            print ("New Room with Room Number : "+str(Room_Id)+" Added Successfully")
         except:
-            print "File Not Found"
+            print ("File Not Found")
 
     #Method to Remove Student
     def removeRoom(self,Room_id):
@@ -124,23 +124,23 @@ class Room(Student):
             if (path.exists("Room"+str(Room_id)+".txt")):
                 file1=open("Room"+str(Room_id)+".txt","r")
                 for i in file1:
-                        print i
+                        print (i)
                 file1.close()
                 ch=raw_input("Are sure you want to Delete this room?\t Y/N\t")
                 if ch=='y' or ch=='Y':
                     os.system('cls')
                     os.remove("Room"+str(Room_id)+".txt")
-                    print "Room Number : "+str(Room_id)+" Deleted Successfully"
+                    print ("Room Number : "+str(Room_id)+" Deleted Successfully")
                 else:
                     os.system('cls')
-                    print "Room Not Deleted"
+                    print ("Room Not Deleted")
             else:
                 os.system('cls')
-                print "Not Found"
+                print ("Not Found")
 
         except:
             os.system('cls')
-            print "No room Found"
+            print ("No room Found")
 
 
     #Change Existing Room's Capacity
@@ -149,11 +149,11 @@ class Room(Student):
                     rn=input("Enter Room Number to be Updated:\t")
                     if (path.exists("Room"+str(rn)+".txt")):
                         rid=open("Room"+str(rn)+".txt", 'r')
-                        print "\n"
+                        print ("\n")
                         for i in rid:
-                            print i
+                            print (i)
                         rid.close()
-                        print "\n"
+                        print ("\n")
                         cap=input("Enter New Capacity for this Room:\t")
                         with open("Room"+str(rn)+".txt", 'r') as file:
                             data = file.readlines()
@@ -162,54 +162,54 @@ class Room(Student):
                         with open("Room"+str(rn)+".txt", 'w') as file:
                             file.writelines( data )
                         os.system('cls')
-                        print "\nRoom Id: "+str(rn)+" Updated with its Cpacity: "+str(cap)
+                        print ("\nRoom Id: "+str(rn)+" Updated with its Cpacity: "+str(cap))
                         rid=open("Room"+str(rn)+".txt", 'r')
-                        print "\n"
+                        print ("\n")
                         for i in rid:
-                            print i
-                        print "\n"
+                            print (i)
+                        print ("\n")
                         rid.close()
                     else:
-                        print "Room Not Found"
+                        print ("Room Not Found")
                 except:
-                    print "File Not Found"
+                    print ("File Not Found")
 
     def assignRoom(self):
             try:
-                    print "\nAvailable Rooms"
-                    print "-"*10
+                    print ("\nAvailable Rooms")
+                    print ("-"*10)
                     with open("Room_Id.txt","r") as rooms:
                         data=rooms.readlines()
                     for i in range(1,(len(data))):
                         if (path.exists("Room"+str(i)+".txt")):
-                            print "Room"+str(i)
-                    print "-"*10
+                            print ("Room"+str(i))
+                    print ("-"*10)
                     
                     rn=input("Enter Room Number to be Assigned:\t")
-		    os.system('cls')		
+    os.system('cls')
 		
 					
-                    if (path.exists("Room"+str(rn)+".txt")):
-                        rid=open("Room"+str(rn)+".txt", 'r')
-                        print "\n"
-                        for i in rid:
-                            print i
-                        rid.close()
-			with open("Room"+str(rn)+".txt", 'r') as file:
+if (path.exists("Room"+str(rn)+".txt")):
+    rid=open("Room"+str(rn)+".txt", 'r')
+    print ("\n")
+        for i in rid:
+            print (i)
+    rid.close()
+with open("Room"+str(rn)+".txt", 'r') as file:
                             data = file.readlines()
                             file.seek(1)
                         capacity = data[1].split(':')[1]
                         capacity=int(capacity)
                         if len(data)<capacity+3:
-                            print "\n"
-                            print "\nAvailable Students"
-                            print "-"*10
+                            print ("\n")
+                            print ("\nAvailable Students")
+                            print ("-"*10)
                             with open("Hostel_Ids.txt","r") as studs:
                                 data=studs.readlines()
                             for i in range(1,(len(data))):
                                 if (path.exists("Student"+str(i)+".txt")):
-                                    print "Student"+str(i)
-                            print "-"*10
+                                    print ("Student"+str(i))
+                            print ("-"*10)
                             
                             stud=input("Enter Student ID to be Assigned :\t")
                             os.system('cls')
@@ -219,54 +219,54 @@ class Room(Student):
                                     data = sid.readlines()
                                     
                                 if len(data)>10:
-                                    print "Student Already Assigned."
+                                    print ("Student Already Assigned.")
                                 else:
                                     sid=open("Student"+str(stud)+".txt", 'r')
-                                    print "\n"
+                                    print ("\n")
                                     for i in sid:
-                                        print i
+                                        print (i)
                                     sid.close()
-                                    print "\n"
+                                    print ("\n")
                                     ch=raw_input("Are you sure want to assign this student to Room"+str(rn)+" ?\tY/N :\t")
                                     if ch=='Y' or ch=='y':
                                         rid=open("Room"+str(rn)+".txt", "a")
                                         rid.write("Student Assigned :Student"+str(stud))
                                         sid=open("Student"+str(stud)+".txt","a")
                                         sid.write("\nRoom Assigned: Room"+str(rn))
-                                        print "\n"
+                                        print ("\n")
                                         os.system('cls')
 
-                                        print "Assignment Done Successfully"
+                                        print ("Assignment Done Successfully")
                                         sid.close()
                                         rid.close()
                                                                 
                                 
                             else:
-                                print "Student Not Found"
+                                print ("Student Not Found")
                         else:
-                            print "\nThis Room is Full\n\nPlease Check for Another Room"
+                            print (("\nThis Room is Full\n\nPlease Check for Another Room")
                     else:
-                        print "Room Not Found"
+                        print ("Room Not Found")
             except:
-                print "File Not Found"
+                print ("File Not Found")
 
     def unassignRoom(self):
         try:
-                    print "\nAvailable Rooms"
-                    print "-"*10
+                    print ("\nAvailable Rooms")
+                    print ("-"*10)
                     with open("Room_Id.txt","r") as rooms:
                         data=rooms.readlines()
                     for i in range(1,(len(data))):
                         if (path.exists("Room"+str(i)+".txt")):
-                            print "Room"+str(i)
-                    print "-"*10
+                            print ("Room"+str(i))
+                    print ("-"*10)
                     
                     rn=input("Enter Room Number to be Viewed:\t")
 		    os.system('cls')					
                     if (path.exists("Room"+str(rn)+".txt")):
                         rid=open("Room"+str(rn)+".txt", 'r')
                         for i in rid:
-                            print i
+                            print (i)
 
                         with open("Room_Id.txt","r") as rooms:
                             data=rooms.readlines()
@@ -287,29 +287,29 @@ class Room(Student):
                             with open("Student"+str(sid)+".txt", 'w') as file:
                                 file.writelines(data)
 
-                            print "Student"+str(sid)+" Removed From the Room"+str(rn)
+                            print ("Student"+str(sid)+" Removed From the Room"+str(rn))
 
                             
                             
                         else:
-                            print "No Students Assigned"
+                            print ("No Students Assigned")
                     else:
-                        print "File Does Not Exist"
+                        print ("File Does Not Exist")
         except:
-            print "File Not Found"
+            print ("File Not Found")
                     
 
 class Admin(Room):
 
-    def __init__(self,Username,Password):
+def __init__(self,Username,Password):
         self.Username=Username
         self.Password=Password
 	
     def Login(self):
-        print "*"*10,
-        print "Login Page",
-        print "*"*10,
-        print "\n"
+        print ("*"*10,)
+        print ("Login Page",)
+        print ("*"*10,)
+        print ("\n")
         self.Username=raw_input("Enter Username: \t")
         self.Password=getpass.getpass("Enter Password: \t")
         r=Room(0,0,0)
@@ -317,10 +317,10 @@ class Admin(Room):
             os.system('cls')
             while True:
              
-               print "-"*50
-               print "Welcome to the ADMIN Page"
-               print "-"*50
-               print "1.Add Room\n2.Remove Room\n3.Change Room Capacity\n4.Logout"
+               print ("-"*50)
+               print ("Welcome to the ADMIN Page")
+               print ("-"*50)
+               print ("1.Add Room\n2.Remove Room\n3.Change Room Capacity\n4.Logout")
                choice=input("Enter your choice:\t") #Choice provided for user to perform various operations using menu
                if choice==1:
                    self.cap=input("Enter Capacity of the Room:\t")
@@ -329,38 +329,38 @@ class Admin(Room):
                    r.addRoom(self.cap,self.price)
                 try:
 
-                    elif choice==2:
-                             print "\nAvailable Rooms"
-                             print "-"*10
+                elif choice==2:
+                             print ("\nAvailable Rooms")
+                             print ("-"*10)
                              with open("Room_Id.txt","r") as rooms:
                                  data=rooms.readlines()
                              for i in range(1,(len(data))):
                                  if (path.exists("Room"+str(i)+".txt")):
-                                     print "Room"+str(i)
-                             print "-"*10
+                                     print ("Room"+str(i))
+                             print ("-"*10)
                              id=input("Enter Room Number to be Removed:\t")
                              r.removeRoom(id)
 
-                    elif choice==3:
-                         print "\nAvailable Rooms"
-                         print "-"*10
+            elif choice==3:
+                         print ("\nAvailable Rooms")
+                         print ("-"*10)
                          with open("Room_Id.txt","r") as rooms:
                              data=rooms.readlines()
                          for i in range(1,(len(data))):
                              if (path.exists("Room"+str(i)+".txt")):
-                                 print "Room"+str(i)
-                         print "-"*10
+                                 print ("Room"+str(i))
+                         print ("-"*10)
                          r.updateCapacity()
 
                     elif choice==4:
                         os.system('cls')
-                        print "Admin Logged out Successfully"
+                        print ("Admin Logged out Successfully")
                         a=Admin(self.Username,self.Password)
                         a.Login()
 
                     else:
                    os.system('cls')
-                   print "Enter Correct Choice"
+                   print ("Enter Correct Choice")
 
         elif (self.Username=="rector" and self.Password=="rector"):
 
@@ -368,10 +368,10 @@ class Admin(Room):
                 os.system('cls')
                 while True:
 
-                   print "-"*50
-                   print "Welcome to the RECTOR Page"
-                   print "-"*50
-                   print "1.Add Student\n2.Remove Student\n3.Assign Student to a Room\n4.Remove Student from a Room\n5.Logout"
+                   print ("-"*50)
+                   print ("Welcome to the RECTOR Page")
+                   print ("-"*50)
+                   print ("1.Add Student\n2.Remove Student\n3.Assign Student to a Room\n4.Remove Student from a Room\n5.Logout")
 
 
                    choice=input("Enter your choice:\t") #Choice provided for user to perform various operations using menu
@@ -476,14 +476,14 @@ class Admin(Room):
                             s.quit()
 
                    elif choice==2:
-                            print "-"*10
-                            print "Available Students :\n\n"
+                            print ("-"*10)
+                            print ("Available Students :\n\n")
                             with open("Hostel_IDs.txt","r") as ids:
                                 data = ids.readlines()
                                 for i in range(1,(len(data))):
                                     if (path.exists("Student"+str(i)+".txt")):
-                                        print "Student"+str(i)
-                            print "-"*10
+                                        print ("Student"+str(i))
+                            print ("-"*10)
                             hostel_id=input('Enter Hostel ID of the Student to be Removed:\t')
                             s=Student("","",0000000000,0000000000,0000000000,"","","")
                             s.removeStudent(hostel_id)
@@ -497,7 +497,7 @@ class Admin(Room):
                             
                    elif choice==5:
                        os.system('cls')
-                       print "Admin Logged out Successfully"
+                       print ("Admin Logged out Successfully")
                        a=Admin(self.Username,self.Password)
                        a.Login()
 
